@@ -2,6 +2,7 @@
 # server that listens for HTTP requests from Twilio, processes
 #   valid bash commands, and sends responses
 
+import subprocess
 from api_credentials import *
 from flask import Flask, request, redirect
 from twilio.twiml.messaging_response import MessagingResponse
@@ -12,9 +13,14 @@ app = Flask(__name__)
 def sms_reply():
     resp = MessagingResponse()
 
-    print 'received message'
+    command = request.form['Body'].split(' ')
 
-    resp.message("test2")
+    try:
+        message = subprocess.check_output(command)
+    except Exception, e:
+        message = 'invalid command'
+
+    resp.message(message)
 
     return str(resp)
 
