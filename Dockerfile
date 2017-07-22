@@ -13,6 +13,10 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
+EXPOSE 5000
+
 COPY *.py ./
 
-CMD ["python", "main.py"]
+ENV FLASK_APP main.py
+
+CMD ["flask", "run", "--host=0.0.0.0"]

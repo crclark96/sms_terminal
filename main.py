@@ -12,9 +12,15 @@ app = Flask(__name__)
 def sms_reply():
     resp = MessagingResponse()
 
+    print 'received message'
+
     resp.message("test2")
 
     return str(resp)
 
+@app.route("/")
+def hello():
+    return "Hello World"
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')

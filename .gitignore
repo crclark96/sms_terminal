@@ -3,5 +3,8 @@
 \#*
 *~
 
+# python bytecode
+*.pyc
+
 # api secrets
 api_credentials.py
