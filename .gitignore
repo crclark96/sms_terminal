@@ -1,0 +1,7 @@
+# emacs file extensions
+
+\#*
+*~
+
+# api secrets
+api_credentials.py
